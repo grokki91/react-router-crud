@@ -1,0 +1,152 @@
+* {
+    box-sizing: border-box;
+    font-size: 17px;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    background: #e9d9d9;   
+}
+
+ul {
+    display: flex;
+}
+
+li {
+    list-style: none;
+    margin-right: 10px;
+}
+
+li::after {
+    content: '|';
+    margin-left: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.App {
+    padding: 15px 30px;
+    position: relative;
+}
+
+.add {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.post {
+    background-color: #f5f5f5;
+}
+
+.btn {
+    background-color: #4f7ccc;
+    color: #fff;
+    padding: 3px;
+    text-align: center;
+    border-radius: 3px;
+    user-select: none;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.new-post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f5f5f5;
+    width: 500px;
+    position: absolute;
+    left: calc(50% - 500px / 2);
+    top: 100px;
+    border: 1px solid #ccc;
+    padding: 15px 30px;
+    border-radius: 3px;
+}
+
+.header-new {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.close {
+    text-decoration: none;
+}
+
+.close:hover {
+    cursor: pointer;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+input {
+    margin-bottom: 10px;
+    height: 70px;
+    padding-left: 15px;
+    width: 100%;
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+.public {
+    width: 150px;
+}
+
+.post-item {
+    width: 300px;
+    background-color: #f5f5f5;
+    margin-bottom: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    color: #000;
+    text-align: right;
+}
+
+.date {
+    font-size: 14px;
+}
+
+.content {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.btn-wrapper {
+    display: flex;
+    justify-content: right;
+}
+
+.btn-wrapper .btn {
+    margin-right: 10px;
+}
+
+.error-text {
+    color: red;
+}
