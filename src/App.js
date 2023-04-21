@@ -5,20 +5,25 @@ import MainPage from './pages/MainPage';
 import PageNewPost from './pages/PageNewPost';
 import PageNotFound from './pages/PageNotFound';
 import Card from './pages/Card';
+import EditCard from './pages/EditCard';
 
 function App() {
   const [post, setPost] = useState('');
   const [posts, setPosts] = useState([]);
   const [errorText, setErrorText] = useState('');
-  const [close, setClose] = useState(false);
-
-  const url = 'http://localhost:7070/posts';
+  const [editText, setEditText] = useState('');
+  const url = 'http://localhost:7070/posts/';
+  
   const handlerInputPost = (e) => {
     if (e.target.value) {
       setErrorText('')
     }
     setPost(e.target.value)
-  };
+  }
+
+  const handlerEditPost = (e) => {
+    setEditText(e.target.value);
+  }
 
   const fetchGetPosts = () => {
     fetch(url)
@@ -31,30 +36,39 @@ function App() {
       return
     }
 
-    const newPost = {
-      id: 1 || post.id++,
-      content: post,
-      created: new Date(),
-    }
-
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'applicaton/json' },
-      body: JSON.stringify(newPost)
+      body: JSON.stringify({content: post})
     }
 
-    const response = await fetch(url, options);
-    if (response.ok) {
-      setPosts(response);
-      setPost('')
-      fetchGetPosts()
-    } else {
-      console.error(response)
-    }
+    fetch(url, options)
+      .then(response => {
+        setPosts(response);
+        setPost('');
+      })
+      .catch(err => console.error(err));
   }
 
-  const addErrorText = () => setErrorText('Вы ничего не написали');
+  const fetchEditPost = (id) => {
+    const options = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'applicaton/json' },
+        body: JSON.stringify({content: editText})
+      }
 
+    fetch(`${url}${id}`, options)
+      .then(response => setPost(response))
+      .catch(err => console.error(err))
+  }
+
+  const fetchDeletePost = (id) => {
+    fetch(`${url}${id}`, {method: 'DELETE'})
+  }
+
+  const addErrorText = () => {
+    return setErrorText('Вы ничего не написали');
+  }
 
   return (
     <div className="App">
@@ -66,10 +80,16 @@ function App() {
           onInput={handlerInputPost}
           error={errorText}
           addError={addErrorText}
-          close={close}
-          toClose={setClose}
+          clear={setPost}
         />} />
-        <Route path='/posts/:id' element={<Card post={post}/>} />
+        <Route path='/posts/:id' element={<Card posts={posts} remove={fetchDeletePost} />} />
+        <Route path='/posts/:id/edit' element={<EditCard 
+          edit={handlerEditPost}
+          put={fetchEditPost}
+          text={editText}
+          clear={setPost}
+          />} 
+        />
         <Route path='*' element={<PageNotFound />} />
       </Routes>
     </div>

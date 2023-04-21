@@ -1,20 +1,19 @@
 import React from 'react';
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const PageNewPost = ({add, value, onInput, error, addError, close, toClose}) => {
-
+const PageNewPost = ({add, value, onInput, error, addError, clear}) => {
     const inputReg = /[<>/{}\][]/
 
     return (
         <div className='new-post'>
             <div className="header-new">
                 <ul>
-                    <NavLink to='/posts/new/pub'>Публикация</NavLink>
-                    <NavLink to='/posts/new/foto'>Фото/Видео</NavLink>
-                    <NavLink to='/posts/new/efir'>Прямой эфир</NavLink>
-                    <NavLink to='/posts/new/else'>Еще</NavLink>
+                    <div>Публикация</div>
+                    <div>Фото/Видео</div>
+                    <div>Прямой эфир</div>
+                    <div>Еще</div>
                 </ul>
-                <Link to='/' className='close'>&#10006;</Link>
+                <Link to='/' className='close' onClick={() => clear('')}>&#10006;</Link>
             </div>
             <div className="form">
                 <input value={value} onChange={(e) => !inputReg.test(e.target.value) ? onInput(e) : false} />

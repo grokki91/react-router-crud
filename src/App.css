@@ -29,6 +29,8 @@ a {
 }
 
 .App {
+    display: flex;
+    justify-content: center;
     padding: 15px 30px;
     position: relative;
 }
@@ -48,6 +50,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .post {
@@ -61,6 +64,11 @@ a {
     text-align: center;
     border-radius: 3px;
     user-select: none;
+}
+
+.del {
+    background-color: red;
+    margin-left: 15px;
 }
 
 .btn:hover {
@@ -89,6 +97,8 @@ a {
 }
 
 .close {
+    display: block;
+    text-align: right;
     text-decoration: none;
 }
 
@@ -133,6 +143,7 @@ input:focus {
 }
 
 .content {
+    font-size: 20px;
     margin-top: 10px;
     margin-bottom: 15px;
     text-align: center;
@@ -149,4 +160,23 @@ input:focus {
 
 .error-text {
     color: red;
+}
+
+.card {
+    width: 400px;
+    margin-top: 50px;
+    border: 1px solid #ccc;
+    padding: 10px 30px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: right;
+    margin-top: 10px;
 }
