@@ -57,7 +57,7 @@ function App() {
         body: JSON.stringify({id: id, content: editText})
       }
 
-    fetch(`${url}${id}`, options)
+    fetch(url, options)
       .then(response => setPost(response))
       .catch(err => console.error(err))
   }
