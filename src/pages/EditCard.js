@@ -10,7 +10,7 @@ const EditCard = ({put, edit, text, clear}) => {
             <Link to='/' className='close' onClick={() => clear('')}>&#10006;</Link>
             <h2>Редактировать публикацию</h2>
             <input value={text} onChange={edit}/>
-            <Link className='btn' onClick={() => put(id)}>Сохранить</Link>
+            <Link to='/' className='btn' onClick={() => put(id)}>Сохранить</Link>
         </div>
     );
 }

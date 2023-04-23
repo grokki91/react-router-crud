@@ -52,9 +52,9 @@ function App() {
 
   const fetchEditPost = (id) => {
     const options = {
-        method: 'PUT',
+        method: 'POST',
         headers: { 'Content-Type': 'applicaton/json' },
-        body: JSON.stringify({content: editText})
+        body: JSON.stringify({id: id, content: editText})
       }
 
     fetch(`${url}${id}`, options)
